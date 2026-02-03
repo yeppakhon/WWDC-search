@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WWDC 字幕搜索 - 个人知识库</title>
+  <meta name="description" content="搜索 WWDC 视频字幕，快速找到你想看的技术内容">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <!-- 头部 -->
+  <header class="header">
+    <h1 class="logo">
+      <span class="icon">✏️</span>
+      WWDC 字幕搜索
+    </h1>
+    <p class="tagline">通过台词找到视频片段 · 个人知识库</p>
+  </header>
+
+  <!-- 搜索区域 -->
+  <section class="search-section">
+    <div class="search-container">
+      <input type="text" id="searchInput" class="search-input" placeholder="输入关键词搜索，如 SwiftUI、navigation、animation..."
+        autocomplete="off">
+      <button id="searchBtn" class="search-btn">搜索 🔍</button>
+    </div>
+    <!-- 搜索历史 -->
+    <div id="searchHistory" class="search-history"></div>
+    <!-- 年份筛选 -->
+    <div id="yearFilter" class="year-filter-container">
+      <button id="yearFilterBtn" class="year-filter-btn">
+        <span>全部年份</span>
+        <i class="arrow">▼</i>
+      </button>
+      <div id="yearDropdown" class="year-dropdown"></div>
+    </div>
+  </section>
+
+  <!-- 结果统计 -->
+  <div id="resultsStats" class="results-stats">
+    <!-- 动态内容 -->
+  </div>
+
+  <!-- 结果列表 -->
+  <section id="resultsSection" class="results-section">
+    <div id="resultsList" class="results-list">
+      <div class="empty-state">
+        <div class="icon">✏️</div>
+        <h3>开始搜索 WWDC 2011-2024 Keynote</h3>
+        <p>输入关键词，通过台词快速定位视频片段</p>
+        <div style="margin-top: 1.5rem; font-size: 0.9rem; color: #7f8c8d;">
+          提示: 将您的本地视频放入 <code>videos/</code> 目录（如 <code>videos/2019.mp4</code>）即可点“预览”直接观看
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 视频预览模态框 (站内播放) -->
+  <div id="previewModal" class="modal-overlay">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="previewTitle" class="modal-title">视频预览</h2>
+        <button id="closePreview" class="modal-close">×</button>
+      </div>
+      <div class="video-preview-box">
+        <!-- YouTube Player Container -->
+        <div id="youtubePlayer"></div>
+        <!-- Local Video Fallback -->
+        <video id="localVideo" controls width="100%" style="display: none;">
+          您的浏览器不支持 HTML5 视频。
+        </video>
+      </div>
+      <div class="player-footer">
+        <p><strong>正在播放:</strong> <span id="playingVideoName">---</span></p>
+        <p><strong>片段时间:</strong> <span id="playingTimeRange">---</span></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast 提示 -->
+  <div id="toast" class="toast"></div>
+
+  <!-- 页脚 -->
+  <footer class="footer">
+    <p>✨ 手写体风格设计 · 用 ❤️ 打造</p>
+    <p style="margin-top: 0.5rem; font-size: 0.9rem;">
+      数据来源: <a href="https://developer.apple.com/videos/" target="_blank">Apple Developer Videos</a>
+    </p>
+  </footer>
+
+  <!-- 脚本 -->
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <script src="js/data.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/app.js"></script>
+</body>
+
+</html>
